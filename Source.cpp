@@ -55,9 +55,9 @@ int main() {
 			cin >> withdraw;
 			cout << "enter name" << endl;
 			cin >> name;
-			for (auto a : accounts) {
-				if (a.name == name) {
-					a.withdraw(withdraw);
+			for (int i{ 0 }; i < accounts.size(); i++) {
+				if (accounts[i].name == name) {
+					accounts[i].withdraw(withdraw);
 				}
 			}
 
@@ -75,9 +75,9 @@ int main() {
 			cin >> deposite;
 			cout << "enter name " << endl;
 			cin >> name;
-			for (auto a : accounts) {
-				if (a.name == name) {
-					a.deposite(deposite);
+			for (int i{ 0 }; i < accounts.size(); i++) {
+				if (accounts[i].name == name) {
+					accounts[i].deposite(deposite);
 				}
 			}
 

@@ -7,7 +7,7 @@
 
 
 user::user(std::string n, double balance )
-:name{n},balance{balance},account{n,balance}
+:name{n},balance{balance}
 {
 	
 };
@@ -52,13 +52,16 @@ bool user:: deposite(double amount) {
 	cin >> choice;
 	do {
 		if (choice == 1) {
+			cout << "Depositing " << amount << "to saving account" << endl;
 			return saving::deposite(amount);
 		}
 
 		if (choice == 2) {
+			cout << "Depositing " << amount << "to trust account" << endl;
 			return trust::deposite(amount);
 		}
 		if (choice == 3) {
+			cout << "Depositing " << amount << "to account" << endl;
 			return account::deposite(amount);
 		}
 		if (choice == 4) {
@@ -72,7 +75,7 @@ bool user:: deposite(double amount) {
 void user::print(ostream& os) {
 
 	cout << "\nName of this account is: "<<name << endl;
-	cout << "Balance of general account is: " << account::balance << endl;
+	cout << "Total balance of accounts is: " << account::balance << endl;
 	cout << "Balance of trust account is: " << trust::balance << endl;
 	cout << "Balance of saving account is: " << saving::balance << endl;
 	cout << "Thank you for using our bank\n" << endl;
