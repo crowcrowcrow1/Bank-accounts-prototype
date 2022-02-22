@@ -23,10 +23,10 @@ bool saving::withdraw(double amount) {
 	}
 	
 }
-bool saving::deposite(double amount) {
+bool saving::deposit(double amount) {
 	amount = amount + (amount * irate);
 	balance += amount;
-	return account::deposite(amount);
+	return account::deposit(amount);
 }
 
 void saving::print(ostream& os) {

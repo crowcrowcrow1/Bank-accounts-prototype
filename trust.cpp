@@ -12,7 +12,7 @@ bool trust :: withdraw(double amount) {
 		balance -= amount;
 		limit--;
 		cout << "Withdrawing money from trust account balance is " << balance << endl;
-		return account::deposite(amount);
+		return account::deposit(amount);
 		
 		
 	}
@@ -22,9 +22,9 @@ bool trust :: withdraw(double amount) {
 	}
 
 };
-bool trust::deposite(double amount) {
+bool trust::deposit(double amount) {
 	balance += amount;
-	return account::deposite(amount);
+	return account::deposit(amount);
 	
 	
 };

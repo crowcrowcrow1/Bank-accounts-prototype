@@ -5,67 +5,83 @@
 #include"trust.h"
 
 
-
+ 
 user::user(std::string n, double balance )
 :name{n},balance{balance}
 {
 	
 };
 bool user::withdraw(double amount) {
-	if (amount <= account::balance) {
+	if (amount < account::balance) {
 		int choice;
-		cout << "\nFrom which type account?" << endl;
-		cout << "Saving is 1" << endl;
-		cout << "Trust is 2" << endl;
-		cout << "General account is 3\n" << endl;
+		cout << "\nChoose account type" << endl;
+		cout << "1. Saving" << endl;
+		cout << "2. Trust" << endl;
+		cout << "3. account\n" << endl;
+		cout << "4. Exist" << endl;
 		cin >> choice;
 		do {
 			if (choice == 1) {
+				cout << "Withdrawing" << endl;
 				return saving::withdraw(amount);
 			}
 
-			if (choice == 2) {
+			else if (choice == 2) {
+				cout << "Withdrawing" << endl;
 				return trust::withdraw(amount);
 			}
-			if (choice == 3) {
+			else if (choice == 3) {
+				cout << "Withdrawing" << endl;
 				return account::withdraw(amount);
 			}
-			if (choice == 4) {
+			else if (choice == 4) {
 				return false;
+			}
+			else {
+				cin.ignore();
+				cin.clear();
+				cout << "Wrong input" << endl;
+				cin >> choice;
 			}
 		} while (choice != 4);
 		
 	}
 		
-		cout << "nope you got no money" << endl;
+		cout << "Not enough fund " << endl;
 		return false;
 	
 
 };
-bool user:: deposite(double amount) {
+bool user:: deposit(double amount) {
 	int choice;
-	cout << "\nTo which type account?" << endl;
-	cout << "Saving is 1" << endl;
-	cout << "Trust is 2" << endl;
-	cout << "General account is 3" << endl;
+	cout << "\nChoose account type" << endl;
+	cout << "1. Saving" << endl;
+	cout << "2. Trust" << endl;
+	cout << "3. account" << endl;
 	cout << "4. Cancel\n" << endl;
 	cin >> choice;
 	do {
 		if (choice == 1) {
-			cout << "Depositing " << amount << "to saving account" << endl;
-			return saving::deposite(amount);
+			cout << "Depositing $ " << amount << " to your saving account" << endl;
+			return saving::deposit(amount);
 		}
 
-		if (choice == 2) {
-			cout << "Depositing " << amount << "to trust account" << endl;
-			return trust::deposite(amount);
+		else if (choice == 2) {
+			cout << "Depositing $ " << amount << " to your trust account" << endl;
+			return trust::deposit(amount);
 		}
-		if (choice == 3) {
-			cout << "Depositing " << amount << "to account" << endl;
-			return account::deposite(amount);
+		else if (choice == 3) {
+			cout << "Depositing $ " << amount << " to your account" << endl;
+			return account::deposit(amount);
 		}
-		if (choice == 4) {
+		else if (choice == 4) {
 			return false;
+		}
+		else {
+			cin.ignore();
+			cin.clear();
+			cout << "Wrong input" << endl;
+			cin >> choice;
 		}
 	} while (choice != 4);
 	return false;
@@ -75,9 +91,9 @@ bool user:: deposite(double amount) {
 void user::print(ostream& os) {
 
 	cout << "\nName of this account is: "<<name << endl;
-	cout << "Total balance of accounts is: " << account::balance << endl;
-	cout << "Balance of trust account is: " << trust::balance << endl;
-	cout << "Balance of saving account is: " << saving::balance << endl;
+	cout << "The total balance of accounts is: " << account::balance << endl;
+	cout << "The balance of trust account is: " << trust::balance << endl;
+	cout << "The balance of saving account is: " << saving::balance << endl;
 	cout << "Thank you for using our bank\n" << endl;
 
 };

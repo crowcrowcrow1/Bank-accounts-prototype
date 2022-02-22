@@ -21,7 +21,7 @@ bool account::withdraw(double amount) {
 
 
 }
-bool account::deposite(double amount) {
+bool account::deposit(double amount) {
 	if (amount >= 0) {
 		balance += amount;
 		return true;

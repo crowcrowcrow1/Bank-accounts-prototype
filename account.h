@@ -13,7 +13,7 @@ protected:
 public:
 	account(std::string n=defualtname, double balance=defaultbalance);
 	virtual bool withdraw(double amount) = 0;
-	virtual bool deposite(double amount) = 0;
+	virtual bool deposit(double amount) = 0;
 	virtual ~account() = default;
 	virtual void print(ostream& os)override;
 };

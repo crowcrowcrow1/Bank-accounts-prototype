@@ -17,7 +17,7 @@ protected:
 public:
 	saving(std::string name = defualtname, double balance = defaultbalance,double inrate=interestrate);
 	virtual bool withdraw(double amount) override;
-	virtual bool deposite(double amount) override;
+	virtual bool deposit(double amount) override;
 	virtual ~saving() = default;
 	virtual void print(ostream & os)override;
 

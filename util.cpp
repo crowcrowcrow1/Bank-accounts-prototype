@@ -11,10 +11,10 @@ void display(vector<user>&a) {
 
 
 };
-void deposite(vector<user>&a, double amount) {
+void deposit(vector<user>&a, double amount) {
 	for (auto i : a) {
-		if (i.deposite(amount)) {
-			cout << "deposited" << amount << "to" << i << endl;
+		if (i.deposit(amount)) {
+			cout << "Deposite sucessful" << amount << "to" << i << endl;
 		}
 
 		else {

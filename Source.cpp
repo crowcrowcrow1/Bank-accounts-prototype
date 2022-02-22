@@ -1,6 +1,7 @@
 #include<iostream>
 #include<vector>
 #include<string>
+#include <algorithm>
 #include"account.h"
 #include"saving.h"
 #include"trust.h"
@@ -13,11 +14,11 @@ using namespace std;
 
 void menu() {
 
-	cout << "\n1. create an account" << endl;
-	cout << "2. withdraw from a single account" << endl;
-	cout << "3. deposite to a single account" << endl;
+	cout << "\n1. Create an account" << endl;
+	cout << "2. Withdraw from a single account" << endl;
+	cout << "3. Deposit to a single account" << endl;
 	cout << "4. Exit" << endl;
-	cout << "5. display a single account information" << endl;
+	cout << "5. Display a single account information" << endl;
 	cout << "6. Display all account information" << endl;
 	cout << "\nMeanu selection:";
 
@@ -25,62 +26,108 @@ void menu() {
 
 int main() {
 	int choice{ 0 };
-	string name{ "" };
-	double balance{ 0 };
+	
 	vector<user>accounts;
 
 
-	cout << "Welcome to the bank" << endl;
+	cout << "Welcome to Crow's bank! " << endl;
 	
 	do {
 		menu();
 		cin >> choice;
 		if (choice == 1) {
-			cout << "\nwhat is name going to be? ";
-			cin >> name;
-			cout << "\nwhat is inital balance? (genral account) ";
-			cin >> balance;
-			accounts.push_back(user(name, balance));
+				double bal{ 0 };
+				string name{ "" };
+				bool check = true;
+				cout << "\nInitial balance: ";
+				cin >> bal;
+				while (cin.fail()) {
+					cout << "Wrong input" << endl;
+					cout << "Enter again: ";
+					cin.clear();
+					cin.ignore();
+					
+					cin >> bal;
+				}
+				cout << "\nName of the account: ";
+				cin >> name;
+				for (auto a : accounts) {
+					if (a.name == name) {
+						cin.ignore();
+						cin.clear();
+						cout << "Name is already being used" << endl;
+
+						check = false;
+					}
+				}
+				if (check == true) {
+					accounts.push_back(user(name, bal));
+					cout << "Account has been created" << endl;
+				}
 		}
 		
 		else if (choice == 2) {
-			int withdraw{0};
+			double withdraw{0};
 			string name{ "" };
-			cout << "\nWhat would be the amount and from which account?" << endl;
-			cout << "printing account names" << endl;
+			bool check = false;
+			cout << "\nWithdrawing " << endl;
+			cout << "Printing account names" << endl;
 			for (auto a : accounts) {
 				cout << a.name << endl;
 			}
-			cout << "enter amount" << endl;
+			cout << "Enter amount" << endl;
 			cin >> withdraw;
-			cout << "enter name" << endl;
+			while (cin.fail()) {
+				cout << "Wrong input" << endl;
+				cout << "Enter again: ";
+				cin.clear();
+				cin.ignore();
+
+				cin >> withdraw;
+			}
+			cout << "Enter name of account" << endl;
 			cin >> name;
 			for (int i{ 0 }; i < accounts.size(); i++) {
 				if (accounts[i].name == name) {
 					accounts[i].withdraw(withdraw);
+					check = true;
 				}
 			}
-
+			if (check == false) {
+				cout << "There is no match account" << endl;
+			}
 
 		}
 		else if (choice == 3) {
-			int deposite{ 0 };
+			double deposit{ 0 };
 			string name{ "" };
-			cout << "\nWhat would be the amount and to which account? " << endl;
-			cout << "printing account names " << endl;
+			bool check = false;
+			cout << "\nDepositing " << endl;
+			cout << "Printing account names " << endl;
 			for (auto a : accounts) {
 				cout << a.name << endl;
 			}
-			cout << "enter amount " << endl;
-			cin >> deposite;
-			cout << "enter name " << endl;
+			cout << "Enter amount " << endl;
+			cin >> deposit;
+			while (cin.fail()) {
+				cout << "Wrong input" << endl;
+				cout << "Enter again: ";
+				cin.clear();
+				cin.ignore();
+
+				cin >> deposit;
+			}
+			cout << "Enter name " << endl;
 			cin >> name;
 			for (int i{ 0 }; i < accounts.size(); i++) {
 				if (accounts[i].name == name) {
-					accounts[i].deposite(deposite);
+					accounts[i].deposit(deposit);
+					check = true;
 				}
 			}
-
+			if (check == false) {
+				cout << "There is no match account" << endl;
+			}
 
 
 		}
@@ -92,19 +139,23 @@ int main() {
 
 		else if (choice == 5) {
 			string name{ "" };
-			
-			cout << "printing account names " << endl;
+			bool check = false;
+			cout << "Printing account names " << endl;
 			for (auto a : accounts) {
 				cout << a.name << endl;
 			}
-			cout << "which account do you want to see? enter name: " << endl;
+			cout << "Enter name " << endl;
 			cin>>name;
 			for (auto a : accounts) {
 				if (a.name == name) {
 					cout << a;
+					check = true;
 				}
+				
 			}
-			cout << "There is no matching account " << endl;
+			if (check == false) {
+				cout << "There is no matching account " << endl;
+			}
 			
 		}
 
@@ -115,7 +166,7 @@ int main() {
 		else {
 			cin.ignore();
 			cin.clear();
-			cout << "Wrong " << endl;
+			cout << "Wrong input " << endl;
 			cin >> choice;
 		}
 

@@ -7,7 +7,7 @@
 using namespace std;
 
 void display(vector<user>&a);
-	 void deposite(vector<user>&a,double amount) ;
+	 void deposit(vector<user>&a,double amount) ;
 	 void withdraw(vector<user>&a, double amount) ;
 
 
