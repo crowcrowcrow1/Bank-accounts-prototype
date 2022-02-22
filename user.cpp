@@ -7,7 +7,7 @@
 
  
 user::user(std::string n, double balance )
-:name{n},balance{balance}
+	:name{ n }, balance{ balance }, account{ n,balance }
 {
 	
 };

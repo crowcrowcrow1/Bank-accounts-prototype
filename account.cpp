@@ -31,7 +31,7 @@ bool account::deposit(double amount) {
 
 }
 void account::print(ostream& os) {
-	cout << "this is account and balance and name are" << balance << " " << name << endl;
+	cout << "" << balance << " " << name << endl;
 
 
 }

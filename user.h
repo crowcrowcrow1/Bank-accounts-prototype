@@ -7,7 +7,7 @@
 using namespace std;
 
 
-class user :virtual public checking, virtual public trust, virtual public printing 
+class user :virtual public checking, virtual public trust, virtual public printing, virtual public account
 {
 private:
 	static constexpr const char* defualtname = "default user account";

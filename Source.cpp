@@ -24,6 +24,19 @@ void menu() {
 
 }
 
+double checking(double a) {
+
+	while (cin.fail()) {
+		cin.clear();
+		cin.ignore();
+		cout << "Wrong input";
+		cin >> a;
+		
+	}
+
+	return a;
+}
+
 int main() {
 	int choice{ 0 };
 	
@@ -41,14 +54,9 @@ int main() {
 				bool check = true;
 				cout << "\nInitial balance: ";
 				cin >> bal;
-				while (cin.fail()) {
-					cout << "Wrong input" << endl;
-					cout << "Enter again: ";
-					cin.clear();
-					cin.ignore();
-					
-					cin >> bal;
-				}
+				
+				bal = checking(bal);
+				
 				cout << "\nName of the account: ";
 				cin >> name;
 				for (auto a : accounts) {
