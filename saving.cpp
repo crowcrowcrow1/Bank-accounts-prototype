@@ -12,7 +12,7 @@ saving::saving(string name , double balance, double inrate ):
 }
 	
 bool saving::withdraw(double amount) {
-	if (amount <= account::balance) {
+	if (amount <= balance) {
 		balance -= amount;
 		cout << "Withdrawing money from saving account balance is " << balance << endl;
 		return account::withdraw(amount);

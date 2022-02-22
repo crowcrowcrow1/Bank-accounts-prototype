@@ -7,7 +7,7 @@
 using namespace std;
 
 
-class user :virtual public checking, virtual public trust, virtual public printing, virtual public account
+class user : public checking,  public trust
 {
 private:
 	static constexpr const char* defualtname = "default user account";
@@ -16,7 +16,7 @@ protected:
 	
 	double balance=account::balance;
 public:
-	std::string name;
+	std::string nameofuser;
 	user(std::string n = defualtname, double balance = defaultbalance);
 	virtual bool withdraw(double amount) override;
 	virtual bool deposit(double amount) override;

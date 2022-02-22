@@ -2,7 +2,7 @@
 #include<string>
 #include<iostream>
 #include"printing.h"
-class account:public printing
+class account: virtual public printing
 {
 private:
 	static constexpr const char* defualtname = "default account";

@@ -7,12 +7,13 @@
 
  
 user::user(std::string n, double balance )
-	:name{ n }, balance{ balance }, account{ n,balance }
+	:nameofuser{ n }, balance{ balance }
 {
-	
+	account::name = n;
+	account::balance = balance;
 };
 bool user::withdraw(double amount) {
-	if (amount < account::balance) {
+	
 		int choice;
 		cout << "\nChoose account type" << endl;
 		cout << "1. Saving" << endl;
@@ -44,14 +45,13 @@ bool user::withdraw(double amount) {
 				cin >> choice;
 			}
 		} while (choice != 4);
-		
+		return true;
 	}
 		
-		cout << "Not enough fund " << endl;
-		return false;
+	
 	
 
-};
+
 bool user:: deposit(double amount) {
 	int choice;
 	cout << "\nChoose account type" << endl;
@@ -90,7 +90,7 @@ bool user:: deposit(double amount) {
 
 void user::print(ostream& os) {
 
-	cout << "\nName of this account is: "<<name << endl;
+	cout << "\nName of this account is: "<<nameofuser << endl;
 	cout << "The total balance of accounts is: " << account::balance << endl;
 	cout << "The balance of trust account is: " << trust::balance << endl;
 	cout << "The balance of saving account is: " << saving::balance << endl;

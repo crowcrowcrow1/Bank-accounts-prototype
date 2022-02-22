@@ -26,7 +26,7 @@ bool account::deposit(double amount) {
 		balance += amount;
 		return true;
 	}
-	return false; 
+	else { return false; }
 
 
 }
