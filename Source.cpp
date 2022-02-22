@@ -164,8 +164,8 @@ int main() {
 		}
 
 		else {
-			cin.ignore();
 			cin.clear();
+			cin.ignore();
 			cout << "Wrong input " << endl;
 			cin >> choice;
 		}

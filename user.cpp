@@ -38,8 +38,8 @@ bool user::withdraw(double amount) {
 				return false;
 			}
 			else {
-				cin.ignore();
 				cin.clear();
+				cin.ignore();
 				cout << "Wrong input" << endl;
 				cin >> choice;
 			}
@@ -78,8 +78,8 @@ bool user:: deposit(double amount) {
 			return false;
 		}
 		else {
-			cin.ignore();
 			cin.clear();
+			cin.ignore();
 			cout << "Wrong input" << endl;
 			cin >> choice;
 		}
