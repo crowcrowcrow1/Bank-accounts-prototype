@@ -14,7 +14,7 @@ private:
 	static constexpr const double defaultbalance = 0.0;
 protected:
 	
-	double balance=account::balance;
+	
 public:
 	std::string nameofuser;
 	user(std::string n = defualtname, double balance = defaultbalance);

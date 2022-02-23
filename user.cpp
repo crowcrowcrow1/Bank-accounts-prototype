@@ -7,9 +7,9 @@
 
  
 user::user(std::string n, double balance )
-	:nameofuser{ n }, balance{ balance }
+	:nameofuser{ n }
 {
-	account::name = n;
+	
 	account::balance = balance;
 };
 bool user::withdraw(double amount) {

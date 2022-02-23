@@ -8,20 +8,19 @@
 #include"util.h"
 #include"user.h"
 
-
 using namespace std;
-
-
 
 
 
 int main() {
 	int choice{ 0 };
-	
-	
 	vector<user>accounts;
 	
-	 
+
+	
+	
+
+
 	cout << "Welcome to Crow's bank! " << endl;
 	
 	do {
@@ -45,7 +44,6 @@ int main() {
 			return 0;
 		}
 
-
 		else if (choice == 5) {
 
 			displaysingle(accounts);
@@ -61,10 +59,8 @@ int main() {
 			cout << "Wrong input " << endl;
 			cin >> choice;
 		}
-
 		
 	} while (choice != 4);
-
 	
 	return 0;
 	

@@ -5,7 +5,8 @@
 #include"account.h"
 
 using namespace std;
-
+bool finding_name1(vector<user>& accounts, string name);
+int finding_name2(vector<user>accounts, string name);
 void display(vector<user>&a) {
 	for (auto i : a) {
 		cout << i << endl;
@@ -37,8 +38,6 @@ void withdraw(vector<user>&a,double amount) {
 
 	};
 
-
-
 };
 
 void menu() {
@@ -62,7 +61,6 @@ double checking(double a) {
 		cin >> a;
 
 	}
-
 	return a;
 }
 
@@ -109,15 +107,18 @@ void deposit_single(vector<user>& accounts) {
 
 	cout << "Enter name " << endl;
 	cin >> name;
-	for (int i{ 0 }; i < accounts.size(); i++) {
-		if (accounts[i].nameofuser == name) {
-			accounts[i].deposit(deposit);
-			check = true;
-		}
+	
+	int location;
+
+	location = finding_name2(accounts, name);
+
+	if (location != 999) {
+		accounts[location].deposit(deposit);
 	}
-	if (check == false) {
-		cout << "There is no match account" << endl;
+	else {
+		cout << "No match account is found" << endl;
 	}
+	
 
 }
 
@@ -125,6 +126,7 @@ void account_creation(vector<user>& accounts) {
 	double bal{ 0 };
 	string name{ "" };
 	bool check = true;
+
 	cout << "\nInitial balance: ";
 	cin >> bal;
 
@@ -132,18 +134,15 @@ void account_creation(vector<user>& accounts) {
 
 	cout << "\nName of the account: ";
 	cin >> name;
-	for (auto a : accounts) {
-		if (a.nameofuser == name) {
-			
-			cout << "Name is already being used" << endl;
-
-			check = false;
-		}
-	}
-	if (check == true) {
+	check = finding_name1(accounts, name);
+	if (check == false) {
 		accounts.push_back(user(name, bal));
 		cout << "Account has been created" << endl;
 	}
+	else {
+		cout << "Name is being used already" << endl;
+	}
+
 }
 void withdraw_single(vector<user>& accounts) {
 
@@ -153,22 +152,45 @@ void withdraw_single(vector<user>& accounts) {
 
 	cout << "\nWithdrawing " << endl;
 	cout << "Printing account names" << endl;
-	
+
 	display_reuse(accounts);
 
 	cout << "Enter amount" << endl;
 	cin >> withdraw;
+
 	withdraw = checking(withdraw);
-	
+
 	cout << "Enter name of account" << endl;
 	cin >> name;
-	for (int i{ 0 }; i < accounts.size(); i++) {
-		if (accounts[i].nameofuser == name) {
-			accounts[i].withdraw(withdraw);
-			check = true;
-		}
+	int location{ 0 };
+	location = finding_name2(accounts, name);
+
+	if (location != 999) {
+
+		accounts[location].withdraw(withdraw);
 	}
-	if (check == false) {
+	else {
 		cout << "There is no match account" << endl;
 	}
+}
+
+bool finding_name1(vector<user>& accounts,string name) {
+	for (auto i : accounts) {
+		if (i.nameofuser == name) {
+			return true;
+		}
+	}
+	return false;
+
+}
+
+
+int finding_name2(vector<user>accounts,string name) {
+	for (int i{ 0 }; i < accounts.size(); i++) {
+		if (accounts[i].nameofuser == name) {
+			return i;
+		}
+	}
+	return 999;
+
 }
